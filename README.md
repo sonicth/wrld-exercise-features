@@ -7,7 +7,7 @@ The *most isolated* feature can be obtained by searching for a point, representi
 
 Complexity
 ----------
-The [complexity of Delaunay computation](http://www.qhull.org/html/qh-code.htm#performance) is limited by O(n*log n) in the *worst* case. The isolation search is limited by O(n*k), where k is the largest number of neighbours in the Voronoi diagram, and, since it can be considered a constant for a large and evenly distributed point set in space,  the complexity is instead O(n). Taking into account both operations, we stay within the O(n*log n) limits. 
+The [complexity of Delaunay computation](http://www.qhull.org/html/qh-code.htm#performance) is limited by *O(nlog n)* in the *worst* case. The isolation search is limited by *O(nk)*, where k is the largest number of neighbours in the Voronoi diagram, and, since it can be considered a constant for a large and evenly distributed point set in space,  the complexity is instead *O(n)*. Taking into account both operations, we stay within the *O(nlog n)* limits. 
 An improvement to the constant factor in the isolation search could have been made by caching the distance between any two neighbours, improving the performance roughly twice-fold.
 
 Implementation
