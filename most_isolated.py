@@ -1,10 +1,10 @@
-
+#!/usr/bin/python3
+#
+# Mike Vasiljevs, 20/march/2018
+# solution to the most isolated feature search exercise
+#
 import numpy as np
 from scipy.spatial import Delaunay
-
-from scipy.spatial import Voronoi, voronoi_plot_2d
-import matplotlib.pyplot as plt
-import matplotlib as mpl
 import sys
 
 # get index of the most isolated point
@@ -18,7 +18,6 @@ def isolationIdx(points):
 	#	@sa https://docs.scipy.org/doc/scipy-0.18.1/reference/generated/scipy.spatial.Delaunay.vertex_neighbor_vertices.html#scipy.spatial.Delaunay.vertex_neighbor_vertices
 	neibor_idx_offsets, neibor_idxs = tri.vertex_neighbor_vertices
 	isolation_distances = []
-	# print ("* computing distances")
 	# loop through points...
 	for i in np.arange(0, len(points)):
 		neibor_distances = []
@@ -31,9 +30,8 @@ def isolationIdx(points):
 		min_distance = min(neibor_distances)
 		isolation_distances.append(min_distance)
 
-	# print ("* done!")
-	#find element index, which is furthest from any other element,
-	# 	i.e. the one that has the largest of isolation or the minimum neighbour distances
+	# 3) find element index of the most isolated element and return it,
+	# 	i.e. the element that has the largest of isolation or the minimum neighbour distances
 	most_isolated_idx = isolation_distances.index(max(isolation_distances))
 	return most_isolated_idx
 
@@ -47,7 +45,6 @@ def readPointsFromStdin():
 		names.append( data[0] )
 		x,y = float(data[1]), float(data[2])
 		points.append(np.array([x, y]))
-	# print ("**line ", data)
 	return points,names
 
 def main():
@@ -59,15 +56,5 @@ def main():
 	
 	# ...print its name
 	print (feature_names[idx])
-
-	# DBGG
-	# sys.exit(0)
-	# y = np.array([2, 3])
-	# xs = []
-	# ys = []
-	# plt.scatter(xs, ys)
-	# plt.scatter(xs[i], ys[i])
-	# plt.show()
-
 main()
 
